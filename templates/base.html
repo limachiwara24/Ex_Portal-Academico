@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Portal Académico{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav>
+        <a href="{{ url_for('index') }}">Inicio</a> |
+        <a href="{{ url_for('lista_cursos') }}">Cursos</a> |
+        <a href="{{ url_for('perfil') }}">Perfil</a> |
+        {% if 'usuario' in session %}
+            <a href="{{ url_for('logout') }}">Cerrar sesión ({{ session['usuario'] }})</a>
+        {% else %}
+            <a href="{{ url_for('login') }}">Iniciar sesión</a>
+        {% endif %}
+    </nav>
+    <hr>
+    {% block content %}{% endblock %}
+</body>
+</html>

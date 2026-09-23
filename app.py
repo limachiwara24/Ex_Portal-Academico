@@ -44,6 +44,17 @@ def logout():
     session.pop('usuario', None)
     return redirect(url_for('index'))
 
+@app.route('/procesar_login', methods=['POST'])
+def procesar_login():
+    usuario = request.form['usuario']
+    contrasena = request.form['contrasena']
+
+    if usuario in usuarios and usuarios[usuario] == contrasena:
+        session['usuario'] = usuario
+        return redirect(url_for('lista_cursos'))
+    else:
+        return render_template('login.html', error="Usuario o contraseña incorrectos.")
+
 
 if __name__ == '__main__':
     app.run(debug=True)

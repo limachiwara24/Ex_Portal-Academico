@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Inicio - Portal Académico{% endblock %}
+
+{% block content %}
+    <h1>Portal Académico</h1>
+    <p>Bienvenido al portal académico. Usa el menú para navegar.</p>
+
+    {% if 'usuario' in session %}
+        <p><strong>Hola, {{ session['usuario'] }}!</strong></p>
+    {% else %}
+        <p>Por favor, <a href="{{ url_for('login') }}">inicia sesión</a>.</p>
+    {% endif %}
+{% endblock %}

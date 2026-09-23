@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Cursos - Portal Académico{% endblock %}
+
+{% block content %}
+    <h1>Lista de Cursos Disponibles</h1>
+
+    {% if cursos %}
+        <ul>
+        {% for curso in cursos %}
+            <li>
+                <strong>{{ curso.nombre }}</strong> —
+                Docente: {{ curso.docente }} —
+                Cupos: {{ curso.cupos }}
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No hay cursos disponibles.</p>
+    {% endif %}
+{% endblock %}
